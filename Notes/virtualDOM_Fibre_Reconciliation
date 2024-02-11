@@ -1,0 +1,29 @@
+## fibre
+
+- used in UI updation
+- it increase the suitability of animation, layout and gesture
+- other features are:
+
+1. Pause a work and come back later
+2. assign priority to diferent types of work
+   (like when there are multiple updation operation than it assigns priority to operation which one is need to do first)
+3. reuse previously completed work
+4. abort work if it is no longer needed
+   (like there may be cases where we three consecutive updates on a button then it will abort the initially update and do the final update.)
+
+- in order to do any of the above, we first need a way to break work down into units.In one sense, that's what a fiber is.
+- Therefore a fiber represents a unit of work
+
+## What is reconciliation?
+
+- reconciliation: The algorithm React uses to diff one tree with another to determine which parts need to be changed.
+
+- Actually re-rendering the entire app on each change only works for the most trivial apps; in a real-world app, it's prohibitively costly in terms of performance. React has optimizations which create the appearance of whole app re-rendering while maintaining great performance. The bulk of these optimizations are part of a process called reconciliation.
+
+- Reconciliation is the algorithm behind what is popularly understood as the "virtual DOM." A high-level description goes something like this: when you render a React application, a tree of nodes that describes the app is generated and saved in memory. This tree is then flushed to the rendering environment — for example, in the case of a browser application, it's translated to a set of DOM operations. When the app is updated (usually via setState), a new tree is generated. The new tree is diffed with the previous tree to compute which operations are needed to update the rendered app.
+
+## The key points are:
+
+- Different component types are assumed to generate substantially different trees. React will not attempt to diff them, but rather replace the old tree completely.
+
+- Diffing of lists is performed using keys. Keys should be "stable, predictable, and unique."
